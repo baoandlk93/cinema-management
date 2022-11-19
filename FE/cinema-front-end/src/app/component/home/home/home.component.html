@@ -6,8 +6,7 @@
       </a>
     </div>
   </div>
-
-  <div class="topnav col-lg-7 mb-5 menu-bar" id="myTopnav">
+  <div class="topnav col-lg-7 mb-5 menu-bar" *ngIf="username=='admin'">
     <a routerLink="/movie/list"><i class="fa-solid fa-film"></i> Phim</a>
     <a routerLink="/ticket/booking-ticket"><i class="fa fa-ticket"></i> Đặt vé</a>
     <a routerLink="/employee/list"><i class="fa fa-user"></i> Nhân viên</a>
@@ -15,7 +14,38 @@
     <a routerLink="/promotion/list"><i class="fa fa-percent"></i> Khuyến mãi</a>
     <a routerLink="/statement/movie"><i class="fa fa-chart-simple"></i>Thống kê phim</a>
     <a routerLink="/statement/customer"><i class="fa fa-chart-simple"></i>Thống kê thành viên</a>
-    <a routerLink="/register/signup" *ngIf="username==''"><i class="fa fa-video"></i> Đăng kí</a>
+    <a href="javascript:void(0);" class="icon" onclick="myResize()">
+      <i class="fa-solid fa-bars"></i>
+    </a>
+  </div>
+  <div class="topnav col-lg-7 mb-5 menu-bar" *ngIf="username=='employee'">
+    <a routerLink="/movie/list"><i class="fa-solid fa-film"></i> Phim</a>
+    <a routerLink="/ticket/booking-ticket"><i class="fa fa-ticket"></i> Đặt vé</a>
+    <a routerLink="/customer/list"><i class="fa fa-user-secret"></i> Thành viên</a>
+    <a routerLink="/ticket/list-management"><i class="fa fa-user-secret"></i> Quản lý vé</a>
+    <a routerLink="/promotion/list"><i class="fa fa-percent"></i> Khuyến mãi</a>
+    <a routerLink="/statement/movie"><i class="fa fa-chart-simple"></i> Thống kê phim</a>
+    <a routerLink="/statement/customer"><i class="fa fa-chart-simple"></i> Thống kê thành viên</a>
+    <a href="javascript:void(0);" class="icon" onclick="myResize()">
+      <i class="fa-solid fa-bars"></i>
+    </a>
+  </div>
+  <div class="topnav col-lg-7 mb-5 menu-bar "id="myTopnav" *ngIf="username==''">
+    <a routerLink="" class="mx-3"><i class="fa-solid fa-house"></i> Trang chủ </a>
+    <a routerLink="/ticket/booking-ticket" class="mx-3"><i class="fa fa-ticket"></i> Đặt vé</a>
+    <a routerLink="/moviePlay" class="mx-3"><i class="fa-solid fa-film"></i> Phim đang chiếu</a>
+    <a routerLink="/moviePremiere" class="mx-3"><i class="fa-solid fa-film"></i> Phim sắp chiếu</a>
+    <a routerLink="/register/signup" class="mx-3"><i class="fa fa-video"></i> Đăng kí</a>
+    <a href="javascript:void(0);" class="icon" onclick="myResize()">
+      <i class="fa-solid fa-bars"></i>
+    </a>
+  </div>
+  <div class="topnav col-lg-7 mb-5 menu-bar" *ngIf="username=='customer'">
+    <a routerLink="" class="mx-3"><i class="fa-solid fa-house"></i> Trang chủ </a>
+    <a routerLink="/ticket/booking-ticket" class="mx-3"><i class="fa fa-ticket"></i> Đặt vé</a>
+    <a routerLink="/moviePlay" class="mx-3"><i class="fa-solid fa-film"></i> Phim đang chiếu</a>
+    <a routerLink="/moviePremiere" class="mx-3"><i class="fa-solid fa-film"></i> Phim sắp chiếu</a>
+    <a routerLink="/register/signup" class="mx-3"><i class="fa fa-video"></i> Đăng kí</a>
     <a href="javascript:void(0);" class="icon" onclick="myResize()">
       <i class="fa-solid fa-bars"></i>
     </a>

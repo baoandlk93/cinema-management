@@ -14,7 +14,7 @@ import {IMovieHome} from '../../../dto/i-movie-home';
   styleUrls: ['./list-premiere.component.css']
 })
 export class ListPremiereComponent implements OnInit {
-  pageSize = 6;
+  pageSize = 3;
   movieList$: Observable<IMovieHome[]> | undefined;
   total$: Observable<number>;
   movieNameSearch = '';
@@ -50,7 +50,7 @@ export class ListPremiereComponent implements OnInit {
   }
 
   nextPage() {
-    this.pageSize += 3;
+    this.pageSize += 1;
     this.paginate(this.movieNameSearch, this.pageSize);
   }
 
