@@ -16,6 +16,6 @@ export class RoomService {
   }
 
   getAllRoom(): Observable<IRoom[]> {
-    return this.http.get<IRoom[]>(API_URL + '/room');
+    return this.http.get<IRoom[]>(API_URL + '/room/list');
   }
 }

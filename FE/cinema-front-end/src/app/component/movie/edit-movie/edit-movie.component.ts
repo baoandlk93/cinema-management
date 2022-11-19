@@ -64,10 +64,10 @@ export class EditMovieComponent implements OnInit {
       this.formEditMovie.get('dateGroup').get('endDay').setValue(this.movieDto.endDay);
       // this.formEditMovie.get('image').setValue(this.movieDto.image);
       console.log(this.showTime);
-
       this.formEditMovie.get('showTimeDto').get('room').setValue(this.showTime[0].room);
-      this.formEditMovie.get('showTimeDto').get('movie').setValue(this.showTime[0].movie);
+      this.getInfo();
       this.formEditMovie.get('showTimeDto').get('times').setValue(this.showTime[0].times);
+      this.formEditMovie.get('showTimeDto').get('movie').setValue(this.showTime[0].movie);
       console.log(this.formEditMovie.value);
     });
     this.formEditMovie = this.fb.group({
@@ -108,7 +108,7 @@ export class EditMovieComponent implements OnInit {
     const item = this.formEditMovie.value.showTimeDto;
     console.log(item);
     const id = item.room.id;
-    const endDate = this.formEditMovie.value.endDay;
+    const endDate = this.formEditMovie.value.dateGroup.endDay;
     console.log(id, endDate);
     this.timeService.getAllTime(id, endDate).subscribe(value => {
       this.timeList = value;
@@ -137,7 +137,7 @@ export class EditMovieComponent implements OnInit {
   }
 
   editMovie() {
-    this.submitted = true;
+    // this.submitted = true;
     this.formEditMovie.value.showTimeDto.dateProjection = this.formEditMovie.value.dateGroup.endDay;
     this.movieDto = this.formEditMovie.value;
     this.movieDto.startDay = this.formEditMovie.get('dateGroup').get('startDay').value;
@@ -219,11 +219,11 @@ export class EditMovieComponent implements OnInit {
     return formatDate(new Date(), 'dd-MM-yyyyhhmmssa', 'en-US');
   }
 
-  compareWithIdRoom(item1, item2) {
+  compareWithId(item1, item2) {
     return item1 && item2 && item1.id === item2.id;
   }
 
-  compareWithIdTime(item1, item2) {
+  compareWithTimeId(item1, item2) {
     return item1 && item2 && item1.id === item2.id;
   }
 

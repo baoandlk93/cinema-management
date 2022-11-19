@@ -54,7 +54,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/api/promotion/**",
                         "/api/movie/**",
                         "/api/employee/**",
-                        "/api/ticket/**"
+                        "/api/ticket/**",
+                        "/api/room/**",
+                        "/api/showTime/**"
                 )
                 .permitAll()
 

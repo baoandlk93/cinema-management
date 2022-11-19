@@ -13,15 +13,20 @@ import java.util.List;
 public class RoomService implements IRoomService {
 
     @Autowired
-    private IRoomRepository iRoomRepository;
+    private IRoomRepository roomRepository;
+
+    @Override
+    public List<Room> getListRoom() {
+        return roomRepository.findAll();
+    }
 
     @Override
     public List<IRoomDto> findAllRoom(String name) {
-        return iRoomRepository.findAllRoom(name);
+        return roomRepository.findAllRoom(name);
     }
 
     @Override
     public IRoomDto findRoomById(String id) {
-        return iRoomRepository.findRoomById(id);
+        return roomRepository.findRoomById(id);
     }
 }

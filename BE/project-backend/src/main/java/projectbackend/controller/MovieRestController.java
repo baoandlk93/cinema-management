@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+import projectbackend.common.validation.DateInput;
 import projectbackend.dto.movie.*;
 import projectbackend.model.movie.Movie;
 import projectbackend.model.show_times.ShowTimes;
@@ -34,6 +35,8 @@ public class MovieRestController {
 
     @Autowired
     private IShowTimesService showTimesService;
+
+    private DateInput dateInput = new DateInput();
 
     //TruongNT function
     @GetMapping(value = "/detail/{id}")
@@ -122,9 +125,11 @@ public class MovieRestController {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(bindingResult.getFieldErrors(),
                     HttpStatus.BAD_REQUEST);
+        } else if (dateInput.validateInput(movieFullDto)) {
+            iMovieService.addMovieDto(movieFullDto);
+            return new ResponseEntity<>(HttpStatus.OK);
         }
-        iMovieService.addMovieDto(movieFullDto);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
     }
 
     //QuyetND function
@@ -134,9 +139,11 @@ public class MovieRestController {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(bindingResult.getFieldErrors(),
                     HttpStatus.BAD_REQUEST);
+        } else if (dateInput.validateInput(movieFullDto)) {
+            iMovieService.editMovieDto(movieFullDto);
+            return new ResponseEntity<>(HttpStatus.OK);
         }
-        iMovieService.editMovieDto(movieFullDto);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
     }
 
     @GetMapping("/movieType")

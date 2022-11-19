@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import projectbackend.dto.room.IRoomDto;
 import projectbackend.dto.room.ISeatRoomDto;
 import projectbackend.dto.room.IdSeatTypeDTo;
-import projectbackend.dto.room.SeatRoomDto;
+import projectbackend.model.room.Room;
 import projectbackend.service.room.IRoomService;
 import projectbackend.service.room.ISeatRoomService;
 
@@ -16,21 +16,32 @@ import java.util.Optional;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping(value = "api/admin/roomRest")
+@RequestMapping(value = "api/room")
 public class RoomRestController {
 
     @Autowired
-    private IRoomService iRoomService;
+    private IRoomService roomService;
 
     @Autowired
     private ISeatRoomService iSeatRoomService;
+
+    @GetMapping("/list")
+    public ResponseEntity<List<Room>> getListRoom() {
+        List<Room> rooms = roomService.getListRoom();
+
+        if (rooms.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(rooms, HttpStatus.OK);
+        }
+    }
 
     @GetMapping(value = "")
     public ResponseEntity<List<IRoomDto>> getAllRoom(@RequestParam Optional<String> name) {
 
         String keywordName = name.orElse("");
 
-        List<IRoomDto> roomList = iRoomService.findAllRoom(keywordName);
+        List<IRoomDto> roomList = roomService.findAllRoom(keywordName);
         if (roomList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
@@ -41,7 +52,7 @@ public class RoomRestController {
     @GetMapping(value = "/{id}")
     public ResponseEntity<IRoomDto> findRoomById(@PathVariable String id) {
 
-        IRoomDto room = iRoomService.findRoomById(id);
+        IRoomDto room = roomService.findRoomById(id);
         if (room == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {

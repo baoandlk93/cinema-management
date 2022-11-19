@@ -144,9 +144,9 @@
     </div>
     <div class="col-lg-6">
       <label  for="filmImg" class="mb-1"><b>Hình Ảnh</b><span>*</span>
-<!--        <span style="color: red; font-size: 12px" class="ps-3"-->
-<!--              *ngIf="formAddMovie.get('image').hasError('required')-->
-<!--             && formAddMovie.get('image').touched || submitted">Vui lòng chọn hình ảnh</span>-->
+        <span style="color: red; font-size: 12px" class="ps-3"
+              *ngIf="formAddMovie.get('image').hasError('required')
+             && formAddMovie.get('image').touched || submitted">Vui lòng chọn hình ảnh</span>
       </label>
       <input type="file" id="filmImg" (change)="showPreview($event)" [src]="imgUrl">
       <img width="130px" height="95px" [src]="imgUrl">

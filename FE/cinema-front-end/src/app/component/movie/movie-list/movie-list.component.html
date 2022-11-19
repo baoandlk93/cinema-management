@@ -54,7 +54,7 @@
           <td data-tittle="Phiên bản">{{movie.version}}</td>
           <td data-tittle="Sửa">
             <div class="text-center wrapCss">
-              <button class="button btnYellow" [routerLink]="['/edit/',movie.id]">
+              <button class="button btnYellow" routerLink="/movie/edit/{{movie.id}}">
                 Chỉnh sửa
               </button>
             </div>
