@@ -1,0 +1,15 @@
+.pFile {
+  color: black;
+}
+
+.imgEmployee {
+  width: 100px;
+  height: 150px;
+}
+
+
+#avatar {
+  border-radius: 0%;
+  width: 100px;
+  height: 150px;
+}
