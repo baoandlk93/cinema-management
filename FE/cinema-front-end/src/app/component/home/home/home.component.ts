@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.showUsername();
+    window.scroll(0, 0);
   }
 
   showUsername() {

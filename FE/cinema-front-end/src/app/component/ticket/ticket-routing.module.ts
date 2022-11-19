@@ -16,14 +16,14 @@ const routes: Routes = [
     path: 'booking-ticket',
     canActivate: [AuthGuard],
     data: {
-      roles: ['ROLE_CUSTOMER']
+      roles: ['ROLE_CUSTOMER', 'ROLE_EMPLOYEE', 'ROLE_ADMIN']
     }, component: BookingTicketComponent
   },
   {
     path: 'booking-seat',
     canActivate: [AuthGuard],
     data: {
-      roles: ['ROLE_CUSTOMER']
+      roles: ['ROLE_CUSTOMER', 'ROLE_EMPLOYEE', 'ROLE_ADMIN']
     },
     component: BookingSeatComponent
   },
@@ -31,7 +31,7 @@ const routes: Routes = [
     path: 'payment-ticket',
     canActivate: [AuthGuard],
     data: {
-      roles: ['ROLE_CUSTOMER']
+      roles: ['ROLE_CUSTOMER', 'ROLE_EMPLOYEE', 'ROLE_ADMIN']
     },
     component: PaymentBookingTicketComponent
   },
@@ -39,7 +39,7 @@ const routes: Routes = [
     path: 'confirm-ticket',
     canActivate: [AuthGuard],
     data: {
-      roles: ['ROLE_CUSTOMER']
+      roles: ['ROLE_CUSTOMER', 'ROLE_EMPLOYEE', 'ROLE_ADMIN']
     }, component: ConfirmBookingTicketComponent
   },
   {

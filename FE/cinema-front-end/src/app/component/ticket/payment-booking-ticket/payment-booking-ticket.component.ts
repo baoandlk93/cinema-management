@@ -88,12 +88,12 @@ export class PaymentBookingTicketComponent implements OnInit {
               Swal.fire({
                 position: 'center',
                 icon: 'success',
-                text: 'Vui lòng đặt vé !',
+                text: 'Cảm ơn quý khách !',
                 title: 'Đã thanh toán thành công',
                 showConfirmButton: false,
               });
               this.action = true;
-              this.router.navigateByUrl('/home');
+              this.router.navigateByUrl('');
             }
           }
         );
