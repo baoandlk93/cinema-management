@@ -43,7 +43,7 @@ public class EmployeeUpdateDto {
     private String passwordNew;
 
     public EmployeeUpdateDto(Integer id, String name, Integer gender, String email, String address,
-                             String phoneNumber, String idCard, String dayOfBirth, String imag,
+                             String phoneNumber, String idCard, String dayOfBirth, String image,
                              boolean isDelete, User user, String passwordNew) {
         this.id = id;
         this.name = name;
@@ -57,6 +57,10 @@ public class EmployeeUpdateDto {
         this.isDelete = isDelete;
         this.user = user;
         this.passwordNew = passwordNew;
+    }
+
+    public EmployeeUpdateDto() {
+
     }
 
     public Integer getId() {
