@@ -17,7 +17,7 @@ import {TokenStorageService} from '../../../service/token-storage.service';
   styleUrls: ['./edit-customer-user.component.css']
 })
 export class EditCustomerUserComponent implements OnInit {
-
+  submitted = false;
   customerName = '';
   totalPoint;
   customerTypename: number;
@@ -79,9 +79,8 @@ export class EditCustomerUserComponent implements OnInit {
   }
 
   updateUser(): void {
+    this.submitted = true;
     this.iUser = this.userForm.value;
-    console.log(this.userForm.get('psFormGroup').get('newPassword'));
-    console.log(this.username);
     this.iUser.password = this.userForm.value.oldPassword;
     this.iUser.newPassword = this.userForm.get('psFormGroup').get('newPassword').value;
     this.userService.editUser(this.iUser).subscribe(value => {
@@ -107,8 +106,8 @@ export class EditCustomerUserComponent implements OnInit {
   }
 
   updateCustomer(): void {
+    this.submitted = true;
     const customer = this.customerForm.value;
-    console.log(this.username);
     this.customerService.editCustomer(customer, this.username).subscribe(value => {
       Swal.fire({
         position: 'center',

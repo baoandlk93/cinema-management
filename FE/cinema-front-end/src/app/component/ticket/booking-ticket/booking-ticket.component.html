@@ -20,7 +20,7 @@
               <h4 class="text-danger">Các bộ phim sắp khởi chiếu.</h4>
 
               <select class="form-select mt-3" size="5" aria-label="size 5 select example"
-                      [(ngModel)]="movieChoose" (change)="changeMovie()">
+                      [(ngModel)]="movieChoose" (change)="changeMovie()" [compareWith]="compareWithId">
                 <option disabled [ngValue]="">Vui lòng chọn phim..</option>
                 <option [ngValue]="item" *ngFor="let item of (movies$ | async)">{{item.name}}</option>
               </select>

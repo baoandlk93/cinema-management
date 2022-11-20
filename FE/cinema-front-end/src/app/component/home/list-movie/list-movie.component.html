@@ -118,7 +118,8 @@
           <div class="book-container">
             <div class="content">
               <button class="button btnBlue mx-1" routerLink="/detail/{{item.id}}">XEM CHI TIẾT</button>
-              <button class="button btnRed" (click)="goToBookingTicket()">ĐẶT VÉ</button>
+              <button class="button btnRed" (click)="transmissionData(item.id, item.name)"
+                      routerLink="/ticket/booking-ticket">ĐẶT VÉ</button>
             </div>
           </div>
           <div class="informations-container">

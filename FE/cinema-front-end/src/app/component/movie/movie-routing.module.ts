@@ -15,7 +15,7 @@ const routes: Routes = [
     path: 'list',
     canActivate: [AuthGuard],
     data: {
-      roles: ['ROLE_EMPLOYEE', 'ROLE_ADMIN']
+      roles: ['ROLE_EMPLOYEE']
     },
     component: MovieListComponent
   },
@@ -23,7 +23,7 @@ const routes: Routes = [
     path: 'add',
     canActivate: [AuthGuard],
     data: {
-      roles: ['ROLE_EMPLOYEE', 'ROLE_ADMIN']
+      roles: ['ROLE_EMPLOYEE']
     },
     component: AddMovieComponent
   },
@@ -31,7 +31,7 @@ const routes: Routes = [
     path: 'edit/:id',
     canActivate: [AuthGuard],
     data: {
-      roles: ['ROLE_EMPLOYEE', 'ROLE_ADMIN']
+      roles: ['ROLE_EMPLOYEE']
     },
     component: EditMovieComponent
   }

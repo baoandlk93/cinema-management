@@ -20,6 +20,7 @@ import {Observable} from 'rxjs';
 export class EmployeeCreateComponent implements OnInit {
   user = new User();
   employee: IEmployee;
+  submitCheck = false;
   imgUrl: string | ArrayBuffer = 'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-d' +
     'oi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg';
 
@@ -44,9 +45,9 @@ export class EmployeeCreateComponent implements OnInit {
     idCard: new FormControl('', [Validators.required, Validators.pattern('^(\\d{9}|\\d{12})$')]),
     dayOfBirth: new FormControl('', [Validators.required]),
     image: new FormControl('', [Validators.required]),
-    username: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]),
+    username: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(32)]),
     passwordGroup: new FormGroup({
-      password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(32)]),
       passwordConfirm: new FormControl('', [Validators.required])
     }, this.checkPassword)
   });
@@ -56,6 +57,7 @@ export class EmployeeCreateComponent implements OnInit {
 
 
   submit(): void {
+    this.submitCheck = true;
     this.employee = this.employeeFormGroup.value;
     this.user.username = this.employeeFormGroup.value.username;
     this.user.password = this.employeeFormGroup.get('passwordGroup').get('password').value;

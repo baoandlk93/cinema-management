@@ -3,15 +3,15 @@
 
   <label for="username"><b>Tài Khoản</b><span class="war">*</span>
     <span class="text-danger ms-3 val"
-          *ngIf="customerForm.controls.username.hasError('required') && customerForm.controls.username.dirty ">
+          *ngIf="customerForm.controls.username.hasError('required') && (customerForm.controls.username.touched || submitted) ">
          Vui lòng nhập tài khoản!!
     </span>
     <span class="text-danger ms-3 val"
-          *ngIf="customerForm.controls.username.hasError('pattern') && customerForm.controls.username.dirty ">
+          *ngIf="customerForm.controls.username.hasError('pattern') && (customerForm.controls.username.touched || submitted) ">
           tài khoản không được chứa ký tự đặc biệt!!
      </span>
     <span class="text-danger ms-3 val"
-          *ngIf="customerForm.controls.username.hasError('minlength') && customerForm.controls.username.dirty ">
+          *ngIf="customerForm.controls.username.hasError('minlength') && (customerForm.controls.username.touched || submitted) ">
         Tài khoản có ít nhất 3 ký tự!!
     </span>
   </label>
@@ -23,12 +23,12 @@
 
       <span class="text-danger ms-3 val"
             *ngIf="customerForm.get('passGroup').hasError('required','password')
-          && customerForm.get('passGroup').get('password').dirty">
+          && (customerForm.get('passGroup').get('password').touched || submitted)">
         Vui lòng nhập mật khẩu!!</span>
 
       <span class="text-danger ms-3 val"
             *ngIf="customerForm.get('passGroup').hasError('pattern','password')
-          && customerForm.get('passGroup').get('password').dirty">
+          && (customerForm.get('passGroup').get('password').touched || submitted)">
                   Mật khẩu có 6 đến 32 ký tự, không được có ký tự đặc biệt!!</span>
 
     </label>
@@ -36,16 +36,16 @@
     <label for="psw-repeat"><b>Nhập Lại Mật Khẩu</b><span class="war">*</span>
       <span class="text-danger ms-3 val"
             *ngIf="customerForm.get('passGroup').hasError('required','confirmPassword')
-                       && customerForm.get('passGroup').get('confirmPassword').dirty">
+                       && (customerForm.get('passGroup').get('confirmPassword').touched || submitted)">
                        Vui lòng nhập  lại mật khẩu!!</span>
       <span class="text-danger ms-3 val"
-            *ngIf="customerForm.get('passGroup').hasError('notSame') && customerForm.get('passGroup').dirty">
+            *ngIf="customerForm.get('passGroup').hasError('notSame') && (customerForm.get('passGroup').touched ||submitted)">
                       Mật khẩu phải giống nhau!!!
                 </span>
 
       <span class="text-danger ms-3 val"
             *ngIf="customerForm.get('passGroup').hasError('pattern','confirmPassword')
-                    && customerForm.get('passGroup').get('confirmPassword').dirty">
+                    && (customerForm.get('passGroup').get('confirmPassword').touched ||submitted)">
                     Mật khẩu có 6 đến 32 ký tự, không được có ký tự đặc biệt!!</span>
     </label>
     <input type="password" name="psw" id="psw-repeat" formControlName="confirmPassword">
@@ -54,16 +54,12 @@
 
   <label for="name"><b>Họ Tên</b><span class="war">*</span>
     <span class="text-danger ms-3 val"
-          *ngIf="customerForm.controls.name.hasError('required') && customerForm.controls.name.dirty ">
+          *ngIf="customerForm.controls.name.hasError('required') && (customerForm.controls.name.touched ||submitted) ">
          Vui lòng nhập tên!
     </span>
     <span class="text-danger ms-3 val"
-          *ngIf="customerForm.controls.name.hasError('pattern') && customerForm.controls.name.dirty ">
+          *ngIf="customerForm.controls.name.hasError('pattern') && (customerForm.controls.name.touched ||submitted) ">
       Tên khách hàng không được chứa số
-    </span>
-    <span class="text-danger ms-3 val"
-          *ngIf="customerForm.controls.name.hasError('minlength') && customerForm.controls.name.dirty ">
-      Tên khách hàng có ít nhất 10 ký tự
     </span>
   </label>
   <input type="text" required id="name" formControlName="name">
@@ -71,7 +67,7 @@
 
   <label for="birthday"><b>Ngày Sinh</b><span class="war">*</span>
     <span class="text-danger ms-3 val"
-          *ngIf="customerForm.controls.dayOfBirth.hasError('required') && customerForm.controls.dayOfBirth.pristine ">
+          *ngIf="customerForm.controls.dayOfBirth.hasError('required') && (customerForm.controls.dayOfBirth.touched ||submitted) ">
          Vui lòng nhập ngày sinh
     </span>
   </label>
@@ -80,7 +76,7 @@
 
   <label class="mt-2"><b>Giới Tính</b><span class="war">*</span>
     <span class="text-danger ms-3 val"
-          *ngIf="customerForm.controls.gender.hasError('required') && customerForm.controls.gender.pristine ">
+          *ngIf="customerForm.controls.gender.hasError('required') && (customerForm.controls.gender.touched||submitted) ">
          Vui lòng nhập giới tính
     </span>
   </label><br>
@@ -91,11 +87,11 @@
 
   <label for="code"><b>CMND/CCCD</b><span class="war">*</span>
     <span class="text-danger ms-3 val"
-          *ngIf="customerForm.controls.idCard.hasError('required') && customerForm.controls.idCard.dirty ">
+          *ngIf="customerForm.controls.idCard.hasError('required') && (customerForm.controls.idCard.touched||submitted) ">
          Vui lòng nhập CCCD/CMND
     </span>
     <span class="text-danger ms-3 val"
-          *ngIf="customerForm.controls.idCard.hasError('pattern') && customerForm.controls.idCard.dirty ">
+          *ngIf="customerForm.controls.idCard.hasError('pattern') &&( customerForm.controls.idCard.touched ||submitted) ">
       Số CMND/CCCD phải 9 hoặc 12 số
     </span>
   </label>
@@ -103,11 +99,11 @@
 
   <label for="email"><b>Email</b><span class="war">*</span>
     <span class="text-danger ms-3 val"
-          *ngIf="customerForm.controls.email.hasError('required') && customerForm.controls.email.dirty ">
+          *ngIf="customerForm.controls.email.hasError('required') &&( customerForm.controls.email.touched ||submitted) ">
          Vui lòng nhập email!!!
     </span>
     <span class="text-danger ms-3 val"
-          *ngIf="customerForm.controls.email.hasError('pattern') && customerForm.controls.email.dirty ">
+          *ngIf="customerForm.controls.email.hasError('pattern') && (customerForm.controls.email.touched || submitted) ">
               Email phải đúng định dạng [xxxxxxxx@xxx.xxx]!!
     </span>
   </label>
@@ -115,7 +111,7 @@
 
   <label for="address"><b>Địa Chỉ</b><span class="war">*</span>
     <span class="text-danger ms-3 val"
-          *ngIf="customerForm.controls.address.hasError('required') && customerForm.controls.address.dirty ">
+          *ngIf="customerForm.controls.address.hasError('required') && (customerForm.controls.address.touched ||submitted) ">
          Vui lòng nhập địa chỉ
     </span>
   </label>
@@ -123,17 +119,17 @@
 
   <label for="phoneNumber"><b>Số Điện Thoại</b><span class="war">*</span>
     <span class="text-danger ms-3 val"
-          *ngIf="customerForm.controls.phoneNumber.hasError('required') && customerForm.controls.phoneNumber.dirty ">
+          *ngIf="customerForm.controls.phoneNumber.hasError('required') && (customerForm.controls.phoneNumber.touched||submitted) ">
          Vui lòng nhập số điện thoại!!!
     </span>
     <span class="text-danger ms-3 val"
-          *ngIf="customerForm.controls.phoneNumber.hasError('pattern') && customerForm.controls.phoneNumber.dirty ">
+          *ngIf="customerForm.controls.phoneNumber.hasError('pattern') && (customerForm.controls.phoneNumber.touched||submitted) ">
               Nhập đúng định dạng [+84x] hoặc [0x] (x là 9 chữ số)!!
     </span>
   </label>
   <input type="text" id="phoneNumber" formControlName="phoneNumber">
 
   <div class="text-center wrapCss">
-    <button type="submit" class="button btnGreen" [disabled]="!customerForm.valid">Đăng Ký</button>
+    <button type="submit" class="button btnGreen" >Đăng Ký</button>
   </div>
 </form>

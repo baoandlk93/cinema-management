@@ -12,13 +12,13 @@ import {CustomerService} from '../../../service/customer.service';
   styleUrls: ['./create-customer.component.css']
 })
 export class CreateCustomerComponent implements OnInit {
-
+  submitted = false;
   customerForm: FormGroup = new FormGroup(
     {
       name: new FormControl('', [Validators.required, Validators.pattern(
         '[a-zA-Z _ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪ' +
-        'ễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]+'),
-        Validators.minLength(10)]),
+        'ễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]+')]
+      ),
       dayOfBirth: new FormControl('', [Validators.required]),
       gender: new FormControl('', Validators.required),
       idCard: new FormControl('', [Validators.required,
@@ -57,6 +57,7 @@ export class CreateCustomerComponent implements OnInit {
   }
 
   submit(): void {
+    this.submitted = true;
     this.customer = this.customerForm.value;
     this.user.username = this.customerForm.value.username;
     this.user.password = this.customerForm.get('passGroup').get('password').value;

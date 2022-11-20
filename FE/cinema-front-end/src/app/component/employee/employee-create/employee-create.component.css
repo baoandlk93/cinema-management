@@ -94,23 +94,23 @@ body {
   justify-content: center;
 }
 
-.button {
-  width: 100px;
-  height: 40px;
-  font-family: "Times New Roman", sans-serif;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 2.5px;
-  font-weight: 500;
-  color: #000;
-  background-color: #fff;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease 0s;
-  cursor: pointer;
-  outline: none;
-}
+/*.button {*/
+/*  width: 100px;*/
+/*  height: 40px;*/
+/*  font-family: "Times New Roman", sans-serif;*/
+/*  font-size: 10px;*/
+/*  text-transform: uppercase;*/
+/*  letter-spacing: 2.5px;*/
+/*  font-weight: 500;*/
+/*  color: #000;*/
+/*  background-color: #fff;*/
+/*  border: none;*/
+/*  border-radius: 5px;*/
+/*  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);*/
+/*  transition: all 0.3s ease 0s;*/
+/*  cursor: pointer;*/
+/*  outline: none;*/
+/*}*/
 
 .btnBlue:hover {
   background-color: #276dfd;
@@ -225,7 +225,7 @@ form {
   /*border-radius: 7px;*/
   padding: 40px;
   background-color: #f2f2f2;
-  box-shadow: 0 0 6px lightblue;
+  box-shadow: 0 0 10px lightblue;
 
 }
 
@@ -259,8 +259,8 @@ a:hover {
 }
 
 .button {
-  width: 140px;
-  height: 45px;
+  width: 115px;
+  height: 40px;
   font-family: "Times New Roman", sans-serif;
   font-size: 12px;
   text-transform: uppercase;
@@ -299,7 +299,7 @@ a:hover {
 
 input[type="file"] {
   color: black;
-  width: 200px;
+  width: 300px;
   margin: 0 auto;
   display: block;
 }

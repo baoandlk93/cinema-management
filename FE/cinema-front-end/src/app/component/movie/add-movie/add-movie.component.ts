@@ -14,6 +14,7 @@ import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import {IMovie} from '../../../model/i-movie';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -40,6 +41,7 @@ export class AddMovieComponent implements OnInit {
               private roomService: RoomService,
               private timeService: TimesService,
               private movieService: MovieService,
+              private router: Router,
               @Inject(AngularFireStorage) private storage: AngularFireStorage) {
   }
 
@@ -146,6 +148,7 @@ export class AddMovieComponent implements OnInit {
           `
             });
             this.formAddMovie.reset();
+            this.router.navigateByUrl('/movie/list');
           }, error => {
             console.log(error);
           });

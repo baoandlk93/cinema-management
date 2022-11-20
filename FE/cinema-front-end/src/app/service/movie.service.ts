@@ -2,14 +2,14 @@ import {IMovieDto} from '../dto/i-movie-dto';
 import {Injectable} from '@angular/core';
 import {IMovieType} from '../model/i-movie-type';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
-import {MovieDto} from '../dto/movie-dto';
 import {TokenStorageService} from './token-storage.service';
 import {IMovie} from '../model/i-movie';
 import {IMovieDetail} from '../dto/i-movie-detail';
 import {SearchResult} from '../model/search-result';
 import {IMovieHome} from '../dto/i-movie-home';
+import {IMovieBookingDto} from '../dto/i-movie-booking-dto';
 
 
 @Injectable({
@@ -19,6 +19,8 @@ export class MovieService {
 
   URL_API = `${environment.api_url}`;
   httpOptions: any;
+  private movieBooking = new BehaviorSubject<IMovieBookingDto>(undefined);
+  currentMovie = this.movieBooking.asObservable();
 
   constructor(private httpClient: HttpClient, private tokenService: TokenStorageService) {
     this.httpOptions = {
@@ -79,5 +81,7 @@ export class MovieService {
     return this.httpClient.delete<void>(this.URL_API + '/movie/delete/' + id);
   }
 
-
+  changeData(movie: IMovieBookingDto): void {
+    this.movieBooking.next(movie);
+  }
 }

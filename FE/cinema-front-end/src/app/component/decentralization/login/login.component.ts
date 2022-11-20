@@ -11,7 +11,6 @@ import {GoogleLoginProvider, SocialAuthService, SocialUser} from 'angularx-socia
 import {AuthenticationService} from '../../../service/authentication.service';
 
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -23,6 +22,7 @@ export class LoginComponent implements OnInit {
   roles: string[] = [];
   returnUrl: string;
   socialUser: SocialUser;
+
   constructor(private authSocialService: SocialAuthService,
               private auth: AuthenticationService,
               private ref: ChangeDetectorRef,
@@ -94,6 +94,7 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+
   signInWithGoogle(): void {
     this.authSocialService.signIn(GoogleLoginProvider.PROVIDER_ID).then(data => {
       this.socialUser = data;
@@ -124,8 +125,12 @@ export class LoginComponent implements OnInit {
     this.authSocialService.signOut().then(
       data => {
         this.tokenStorageService.logOut();
-        window.location.reload();
+        this.router.navigateByUrl('');
       }
     );
+  }
+
+  exit() {
+    this.router.navigateByUrl('');
   }
 }

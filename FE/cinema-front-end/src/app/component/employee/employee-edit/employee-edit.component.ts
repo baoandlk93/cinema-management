@@ -24,6 +24,7 @@ export class EmployeeEditComponent implements OnInit {
   selectedImage: any = null;
   username: string;
   imgUrl: string | ArrayBuffer;
+  submitCheck = false;
 
   constructor(private employeeService: EmployeeService,
               private activatedRoute: ActivatedRoute,
@@ -31,6 +32,18 @@ export class EmployeeEditComponent implements OnInit {
               @Inject(AngularFireStorage) private storage: AngularFireStorage,
               private title: Title) {
     this.title.setTitle('Sửa nhân viên');
+  }
+
+  ngOnInit(): void {
+    this.employeeId = Number(this.activatedRoute.snapshot.params.id);
+    console.log(this.employeeId);
+    this.employeeService.getById(this.employeeId).subscribe(value => {
+      this.employee = value;
+      this.username = value.user.username;
+      this.employeeFormGroup.patchValue(this.employee);
+      this.imgUrl = this.employee.image;
+      console.log(this.employeeFormGroup);
+    });
 
 
     this.employeeFormGroup = new FormGroup({
@@ -46,28 +59,17 @@ export class EmployeeEditComponent implements OnInit {
       dayOfBirth: new FormControl('', [Validators.required]),
       image: new FormControl(''),
       user: new FormGroup({
-        username: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(15)])
+        username: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(32)])
       }),
       passwordGroup: new FormGroup({
-        passwordNew: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]),
+        passwordNew: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(32)]),
         passwordConfirm: new FormControl('')
       }, this.checkPassword)
     });
   }
 
-  ngOnInit(): void {
-    this.employeeId = Number(this.activatedRoute.snapshot.params.id);
-    console.log(this.employeeId);
-    this.employeeService.getById(this.employeeId).subscribe(value => {
-      this.employee = value;
-      this.username = value.user.username;
-      this.employeeFormGroup.patchValue(this.employee);
-      this.imgUrl = this.employee.image;
-      console.log(this.employeeFormGroup);
-    });
-  }
-
   updateEmployee() {
+    this.submitCheck = true;
     this.employee = this.employeeFormGroup.value;
     this.employee.user.password = this.employeeFormGroup.get('passwordGroup').get('passwordNew').value;
     if (this.selectedImage) {

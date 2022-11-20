@@ -6,33 +6,15 @@
       </a>
     </div>
   </div>
-  <div class="topnav col-lg-7 mb-5 menu-bar" *ngIf="username=='admin'">
-    <a routerLink="/movie/list"><i class="fa-solid fa-film"></i> Phim</a>
-    <a routerLink="/ticket/booking-ticket"><i class="fa fa-ticket"></i> Đặt vé</a>
-    <a routerLink="/employee/list"><i class="fa fa-user"></i> Nhân viên</a>
-    <a routerLink="/customer/list"><i class="fa fa-user-secret"></i> Thành viên</a>
-    <a routerLink="/promotion/list"><i class="fa fa-percent"></i> Khuyến mãi</a>
-    <a routerLink="/statement/movie"><i class="fa fa-chart-simple"></i>Thống kê phim</a>
-    <a routerLink="/statement/customer"><i class="fa fa-chart-simple"></i>Thống kê thành viên</a>
-    <a href="javascript:void(0);" class="icon" onclick="myResize()">
-      <i class="fa-solid fa-bars"></i>
-    </a>
-  </div>
-  <div class="topnav col-lg-7 mb-5 menu-bar" *ngIf="username=='employee'">
-    <a routerLink="/movie/list"><i class="fa-solid fa-film"></i> Phim</a>
-    <a routerLink="/ticket/booking-ticket"><i class="fa fa-ticket"></i> Đặt vé</a>
-    <a routerLink="/customer/list"><i class="fa fa-user-secret"></i> Thành viên</a>
-    <a routerLink="/ticket/list-management"><i class="fa fa-user-secret"></i> Quản lý vé</a>
-    <a routerLink="/promotion/list"><i class="fa fa-percent"></i> Khuyến mãi</a>
-    <a routerLink="/statement/movie"><i class="fa fa-chart-simple"></i> Thống kê phim</a>
-    <a routerLink="/statement/customer"><i class="fa fa-chart-simple"></i> Thống kê thành viên</a>
-    <a href="javascript:void(0);" class="icon" onclick="myResize()">
-      <i class="fa-solid fa-bars"></i>
-    </a>
-  </div>
-  <div class="topnav col-lg-7 mb-5 menu-bar "id="myTopnav" *ngIf="username==''">
-    <a routerLink="" class="mx-3"><i class="fa-solid fa-house"></i> Trang chủ </a>
-    <a routerLink="/ticket/booking-ticket" class="mx-3"><i class="fa fa-ticket"></i> Đặt vé</a>
+  <div class="topnav col-lg-7 mb-5 menu-bar">
+    <a routerLink="/movie/list" *ngIf="isEmployee"><i class="fa-solid fa-film"></i> Phim</a>
+    <a routerLink="/ticket/booking-ticket" (click)="transmissionData()"><i class="fa fa-ticket"></i> Đặt vé</a>
+    <a routerLink="/ticket/list-management" *ngIf="isEmployee"><i class="fa fa-user-secret"></i> Quản lý vé</a>
+    <a routerLink="/employee/list" *ngIf="isAdmin"><i class="fa fa-user"></i> Nhân viên</a>
+    <a routerLink="/customer/list" *ngIf="isEmployee"><i class="fa fa-user-secret"></i> Thành viên</a>
+    <a routerLink="/promotion/list" *ngIf="isEmployee"><i class="fa fa-percent"></i> Khuyến mãi</a>
+    <a routerLink="/statement/movie" *ngIf="isAdmin "><i class="fa fa-chart-simple"></i>Thống kê phim</a>
+    <a routerLink="/statement/customer" *ngIf="isAdmin"><i class="fa fa-chart-simple"></i>Thống kê thành viên</a>
     <a routerLink="/moviePlay" class="mx-3"><i class="fa-solid fa-film"></i> Phim đang chiếu</a>
     <a routerLink="/moviePremiere" class="mx-3"><i class="fa-solid fa-film"></i> Phim sắp chiếu</a>
     <a routerLink="/register/signup" class="mx-3"><i class="fa fa-video"></i> Đăng kí</a>
@@ -40,16 +22,38 @@
       <i class="fa-solid fa-bars"></i>
     </a>
   </div>
-  <div class="topnav col-lg-7 mb-5 menu-bar" *ngIf="username=='customer'">
-    <a routerLink="" class="mx-3"><i class="fa-solid fa-house"></i> Trang chủ </a>
-    <a routerLink="/ticket/booking-ticket" class="mx-3"><i class="fa fa-ticket"></i> Đặt vé</a>
-    <a routerLink="/moviePlay" class="mx-3"><i class="fa-solid fa-film"></i> Phim đang chiếu</a>
-    <a routerLink="/moviePremiere" class="mx-3"><i class="fa-solid fa-film"></i> Phim sắp chiếu</a>
-    <a routerLink="/register/signup" class="mx-3"><i class="fa fa-video"></i> Đăng kí</a>
-    <a href="javascript:void(0);" class="icon" onclick="myResize()">
-      <i class="fa-solid fa-bars"></i>
-    </a>
-  </div>
+  <!--  <div class="topnav col-lg-7 mb-5 menu-bar" *ngIf="isEmployee === true">-->
+  <!--    <a routerLink="/movie/list"><i class="fa-solid fa-film"></i> Phim</a>-->
+  <!--    <a routerLink="/ticket/booking-ticket"><i class="fa fa-ticket"></i> Đặt vé</a>-->
+  <!--    <a routerLink="/customer/list"><i class="fa fa-user-secret"></i> Thành viên</a>-->
+  <!--    <a routerLink="/ticket/list-management"><i class="fa fa-user-secret"></i> Quản lý vé</a>-->
+  <!--    <a routerLink="/promotion/list"><i class="fa fa-percent"></i> Khuyến mãi</a>-->
+  <!--    <a routerLink="/statement/movie"><i class="fa fa-chart-simple"></i> Thống kê phim</a>-->
+  <!--    <a routerLink="/statement/customer"><i class="fa fa-chart-simple"></i> Thống kê thành viên</a>-->
+  <!--    <a href="javascript:void(0);" class="icon" onclick="myResize()">-->
+  <!--      <i class="fa-solid fa-bars"></i>-->
+  <!--    </a>-->
+  <!--  </div>-->
+  <!--  <div class="topnav col-lg-7 mb-5 menu-bar " id="myTopnav" *ngIf="isCustomer">-->
+  <!--    <a routerLink="" class="mx-3"><i class="fa-solid fa-house"></i> Trang chủ </a>-->
+  <!--    <a routerLink="/ticket/booking-ticket" class="mx-3"><i class="fa fa-ticket"></i> Đặt vé</a>-->
+  <!--    <a routerLink="/moviePlay" class="mx-3"><i class="fa-solid fa-film"></i> Phim đang chiếu</a>-->
+  <!--    <a routerLink="/moviePremiere" class="mx-3"><i class="fa-solid fa-film"></i> Phim sắp chiếu</a>-->
+  <!--    <a routerLink="/register/signup" class="mx-3"><i class="fa fa-video"></i> Đăng kí</a>-->
+  <!--    <a href="javascript:void(0);" class="icon" onclick="myResize()">-->
+  <!--      <i class="fa-solid fa-bars"></i>-->
+  <!--    </a>-->
+  <!--  </div>-->
+  <!--  <div class="topnav col-lg-7 mb-5 menu-bar" *ngIf="username=='customer'">-->
+  <!--    <a routerLink="" class="mx-3"><i class="fa-solid fa-house"></i> Trang chủ </a>-->
+  <!--    <a routerLink="/ticket/booking-ticket" class="mx-3"><i class="fa fa-ticket"></i> Đặt vé</a>-->
+  <!--    <a routerLink="/moviePlay" class="mx-3"><i class="fa-solid fa-film"></i> Phim đang chiếu</a>-->
+  <!--    <a routerLink="/moviePremiere" class="mx-3"><i class="fa-solid fa-film"></i> Phim sắp chiếu</a>-->
+  <!--    <a routerLink="/register/signup" class="mx-3"><i class="fa fa-video"></i> Đăng kí</a>-->
+  <!--    <a href="javascript:void(0);" class="icon" onclick="myResize()">-->
+  <!--      <i class="fa-solid fa-bars"></i>-->
+  <!--    </a>-->
+  <!--  </div>-->
   <div class="col-lg-3 d-flex">
     <div class="mt-5 pt-3 ps-3">
       <a class="login" routerLink="/login" *ngIf="username==''">
@@ -65,8 +69,10 @@
         </button>
       </a>
       <a routerLink="/register/info" *ngIf="username" style="text-decoration: none; color: orange;">
-        <svg  xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
-          <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+             class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+          <path
+            d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
           <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
         </svg>
         <span class="ps-2">{{username}}</span></a>

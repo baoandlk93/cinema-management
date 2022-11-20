@@ -4,6 +4,7 @@ import {IShowDateBookingDto} from '../../../dto/i-show-date-booking-dto';
 import {IShowtimesBookingDto} from '../../../dto/i-showtimes-booking-dto';
 import {BookingTicketService} from '../../../service/booking-ticket.service';
 import {BehaviorSubject, Observable} from 'rxjs';
+import {MovieService} from '../../../service/movie.service';
 
 
 @Component({
@@ -20,10 +21,18 @@ export class BookingTicketComponent implements OnInit {
   showDateChoose: IShowDateBookingDto;
   showTimeChoose: IShowtimesBookingDto;
 
-  constructor(private bookingTicketService: BookingTicketService) {
+  constructor(private bookingTicketService: BookingTicketService,
+              private movieService: MovieService) {
   }
 
   ngOnInit(): void {
+    this.movieService.currentMovie.subscribe(value => this.movieChoose = value);
+    console.log(this.movieChoose);
+
+    if (this.movieService !== undefined) {
+      this.getShowDateByMovie();
+    }
+
     this.getAllMovieInNext7Days();
   }
 
@@ -68,5 +77,9 @@ export class BookingTicketComponent implements OnInit {
 
   transmissionData() {
     this.bookingTicketService.changeData(this.movieChoose, this.showDateChoose, this.showTimeChoose);
+  }
+
+  compareWithId(item1, item2) {
+    return item1 && item2 && item1.id === item2.id;
   }
 }

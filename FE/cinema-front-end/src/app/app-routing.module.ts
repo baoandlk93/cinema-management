@@ -13,7 +13,7 @@ import {DecentralizationModule} from './component/decentralization/decentralizat
 import {CustomerModule} from './component/customer/customer.module';
 import {StatementManagementModule} from './component/statement-management/statement-management.module';
 
-/*không được xóa canActivate*/
+
 const routes: Routes = [
   {
     path: '', loadChildren: () => HomeModule,
@@ -44,12 +44,19 @@ const routes: Routes = [
     path: 'customer', loadChildren: () => CustomerModule
   },
   {
-    path: 'statement', loadChildren: () => StatementManagementModule
+    path: 'statement',
+    loadChildren: () => StatementManagementModule,
+    canActivate: [AuthGuard],
+    data: {
+      roles: ['ROLE_ADMIN']
+    }
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    scrollPositionRestoration: 'enabled'
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

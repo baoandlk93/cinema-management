@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {DomSanitizer, SafeResourceUrl, Title} from '@angular/platform-browser';
 import {FormControl, Validators} from '@angular/forms';
 import {IMovieDetail} from '../../../dto/i-movie-detail';
+import {IMovieBookingDto} from '../../../dto/i-movie-booking-dto';
 
 @Component({
   selector: 'app-movie-detail',
@@ -16,6 +17,7 @@ export class MovieDetailComponent implements OnInit {
 
   movie: IMovieDetail;
   ctrl = new FormControl(null, Validators.required);
+  movieChoose: IMovieBookingDto;
 
   toggle() {
     if (this.ctrl.disabled) {
@@ -45,7 +47,10 @@ export class MovieDetailComponent implements OnInit {
       this.url = this.transform(this.movie.trailer);
     });
   }
-
+  transmissionData() {
+    this.movieChoose = {id: this.movie.id, name: this.movie.name};
+    this.movieService.changeData(this.movieChoose);
+  }
   goToBookingTicket() {
     this.router.navigateByUrl('ticket/booking-ticket');
   }

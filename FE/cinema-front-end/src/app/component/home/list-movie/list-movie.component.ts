@@ -8,6 +8,7 @@ import {IMovieDto} from '../../../dto/i-movie-dto';
 import {HomeComponent} from '../home/home.component';
 import {IMovieHome} from '../../../dto/i-movie-home';
 import {Router} from '@angular/router';
+import {IMovieBookingDto} from '../../../dto/i-movie-booking-dto';
 
 
 @Component({
@@ -26,6 +27,7 @@ export class ListMovieComponent implements OnInit {
   numberRecord = 0;
   content: boolean;
   totalRecord = 0;
+  movieChoose: IMovieBookingDto;
 
   constructor(private movieService: MovieService,
               private promotionService: PromotionService,
@@ -37,6 +39,11 @@ export class ListMovieComponent implements OnInit {
   ngOnInit(): void {
     this.paginate(this.movieNameSearch, this.pageSize);
     this.getPromotionList(this.numberRecord);
+  }
+
+  transmissionData(idClick: number, nameClick: string) {
+    this.movieChoose = {id: idClick, name: nameClick};
+    this.movieService.changeData(this.movieChoose);
   }
 
   paginate(movieNameSearch, pageSize) {

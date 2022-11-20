@@ -7,24 +7,20 @@ import {AuthGuard} from '../decentralization/auth.guard';
 
 const routes: Routes = [
   {
-    path: 'list', component: PromotionListComponent,
-    canActivate: [AuthGuard],
-    data: {
-      roles: ['ROLE_EMPLOYEE', 'ROLE_ADMIN']
-    }
+    path: 'list', component: PromotionListComponent
   },
   {
     path: 'create', component: PromotionCreateComponent,
     canActivate: [AuthGuard],
     data: {
-      roles: ['ROLE_EMPLOYEE', 'ROLE_ADMIN']
+      roles: ['ROLE_EMPLOYEE']
     }
   },
   {
     path: 'edit/:id', component: PromotionEditComponent,
     canActivate: [AuthGuard],
     data: {
-      roles: ['ROLE_EMPLOYEE', 'ROLE_ADMIN']
+      roles: ['ROLE_EMPLOYEE']
     }
   }
 

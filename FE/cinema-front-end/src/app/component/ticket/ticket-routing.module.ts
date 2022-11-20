@@ -16,14 +16,14 @@ const routes: Routes = [
     path: 'booking-ticket',
     canActivate: [AuthGuard],
     data: {
-      roles: ['ROLE_CUSTOMER', 'ROLE_EMPLOYEE', 'ROLE_ADMIN']
+      roles: ['ROLE_CUSTOMER']
     }, component: BookingTicketComponent
   },
   {
     path: 'booking-seat',
     canActivate: [AuthGuard],
     data: {
-      roles: ['ROLE_CUSTOMER', 'ROLE_EMPLOYEE', 'ROLE_ADMIN']
+      roles: ['ROLE_CUSTOMER']
     },
     component: BookingSeatComponent
   },
@@ -31,7 +31,7 @@ const routes: Routes = [
     path: 'payment-ticket',
     canActivate: [AuthGuard],
     data: {
-      roles: ['ROLE_CUSTOMER', 'ROLE_EMPLOYEE', 'ROLE_ADMIN']
+      roles: ['ROLE_CUSTOMER']
     },
     component: PaymentBookingTicketComponent
   },
@@ -39,14 +39,14 @@ const routes: Routes = [
     path: 'confirm-ticket',
     canActivate: [AuthGuard],
     data: {
-      roles: ['ROLE_CUSTOMER', 'ROLE_EMPLOYEE', 'ROLE_ADMIN']
+      roles: ['ROLE_CUSTOMER']
     }, component: ConfirmBookingTicketComponent
   },
   {
     path: 'list-management',
     canActivate: [AuthGuard],
     data: {
-      roles: ['ROLE_EMPLOYEE', 'ROLE_ADMIN']
+      roles: ['ROLE_EMPLOYEE']
     },
     component: TicketManagementListComponent
   },
@@ -54,7 +54,7 @@ const routes: Routes = [
     path: 'delete-management',
     canActivate: [AuthGuard],
     data: {
-      roles: ['ROLE_EMPLOYEE', 'ROLE_ADMIN']
+      roles: ['ROLE_EMPLOYEE']
     },
     component: TicketManagementDeleteComponent
   },
