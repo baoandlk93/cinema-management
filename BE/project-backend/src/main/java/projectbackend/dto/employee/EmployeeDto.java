@@ -10,29 +10,31 @@ public class EmployeeDto {
 
     private Integer id;
 
-    @NotBlank
+    @NotBlank(message = "Vui lòng nhập tên!")
     private String name;
 
     private Integer gender;
 
-    @NotBlank
-    @Email
+    @NotBlank(message = "Vui lòng nhập email!")
+    @Email(message = "Email phải đúng định dạng, có đuôi là @gmail.com")
     private String email;
 
-    @NotBlank
+    @NotBlank(message = "Vui lòng nhập địa chỉ!")
     private String address;
 
-    @NotBlank
+    @NotBlank(message = "Vui lòng nhập số điện thoại!")
+    @Pattern(regexp = "^((0|[(]84[)][+])9[01]\\d{7})$", message = "Số điện thoại phải đúng định dạng là " +
+            "090|091xxxxxxx hoặc (84)+ 090|091xxxxxxx !")
     private String phoneNumber;
 
     @NotBlank
-    @Pattern(regexp = "^(\\d{9}|\\d{12})$", message = "Identity card must be in the correct format of 9 and 12 numbers")
+    @Pattern(regexp = "^(\\d{9}|\\d{12})$", message = "CMND gồm 9 hoặc 12 số!")
     private String idCard;
 
-    @NotBlank
+    @NotBlank(message = "Chọn ngày sinh!")
     private String dayOfBirth;
 
-    @NotBlank
+    @NotBlank(message = "Chọn ảnh!")
     private String image;
 
     private boolean isDelete;

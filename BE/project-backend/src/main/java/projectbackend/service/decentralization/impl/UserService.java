@@ -62,4 +62,14 @@ public class UserService implements IUserService {
     public Optional<User> showUsername(String username) {
         return userRepository.showUsername(username);
     }
+
+    @Override
+    public Optional<User> findUserByUsername(String username) {
+        return userRepository.findUserByUsername(username);
+    }
+
+    @Override
+    public void updateUser(User user, String username) {
+        userRepository.saveUser(user, username);
+    }
 }

@@ -11,6 +11,8 @@ import java.util.Optional;
 public interface IUserService {
     String existsByUserName(String username);
 
+    Optional<User> findUserByUsername(String username);
+
     List<User> findAll();
 
     User findByUsername(String name);
@@ -24,5 +26,7 @@ public interface IUserService {
     void saveCreateGmail(User user);
 
     Optional<User> showUsername(String username);
+
+    void updateUser(User user, String username);
 
 }

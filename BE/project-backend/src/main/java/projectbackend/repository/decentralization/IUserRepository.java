@@ -44,4 +44,12 @@ public interface IUserRepository extends JpaRepository<User, String> {
 
     @Query(value = "select * from user where user.username =:username", nativeQuery = true)
     Optional<User> showUsername(@Param("username") String username);
+
+    @Query(value = "select * from user where username like %:username%", nativeQuery = true)
+    Optional<User> findUserByUsername(@Param("username") String username);
+
+    @Modifying
+    @Transactional
+    @Query(value = " update user set password =:#{#u.password} where username =:username", nativeQuery = true)
+    void saveUser(@Param("u") User user, @Param("username") String username);
 }
