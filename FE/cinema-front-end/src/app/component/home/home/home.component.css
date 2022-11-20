@@ -4,6 +4,7 @@
   background: url("https://png.pngtree.com/thumb_back/fw800/background/20190221/ourmid/pngtree-film-festival-berlin-film-festival-grammy-golden-plum-image_23357.jpg");
   /*height: 120px;*/
   margin: 0;
+  height: 150px;
 }
 a.navbar-color{
   color: black;
@@ -283,3 +284,18 @@ body {
   font-size: 7px;
   height: 30px;
 }
+.colorA {
+  color: white;
+}
+.nav-header {
+  background: #343a40;
+  font-size: 18px;
+  font-family: 'Times New Roman';
+  font-weight: bold
+}
+.nav-header a:hover {
+  border-radius: 10px;
+  background-color: #ddd;
+  color: #d29805;
+}
+
