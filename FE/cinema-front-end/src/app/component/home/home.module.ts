@@ -7,6 +7,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { MoviePlayComponent } from './movie-play/movie-play.component';
 import {FormsModule} from '@angular/forms';
 import { MoviePremiereComponent } from './movie-premiere/movie-premiere.component';
+import { ListPromotionComponent } from './list-promotion/list-promotion.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { MoviePremiereComponent } from './movie-premiere/movie-premiere.componen
     HomeComponent,
     SidebarComponent,
     MoviePlayComponent,
-    MoviePremiereComponent
+    MoviePremiereComponent,
+    ListPromotionComponent
   ],
     exports: [
         HomeComponent,
