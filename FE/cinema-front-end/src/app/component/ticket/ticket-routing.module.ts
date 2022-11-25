@@ -6,10 +6,10 @@ import {PaymentBookingTicketComponent} from './payment-booking-ticket/payment-bo
 import {ConfirmBookingTicketComponent} from './confirm-booking-ticket/confirm-booking-ticket.component';
 import {BookingTicketComponent} from './booking-ticket/booking-ticket.component';
 import {BookingSeatComponent} from './booking-seat/booking-seat.component';
-import {HistoryPointListComponent} from './history-point-list/history-point-list.component';
-import {BookingTicketListComponent} from './booking-ticket-list/booking-ticket-list.component';
-import {CanceledTicketListComponent} from './canceled-ticket-list/canceled-ticket-list.component';
 import {AuthGuard} from '../decentralization/auth.guard';
+import {PointHistoryComponent} from "./point-history/point-history.component";
+import {BookingTicketHistoryComponent} from "./booking-ticket-history/booking-ticket-history.component";
+import {CanceledTicketHistoryComponent} from "./canceled-ticket-history/canceled-ticket-history.component";
 
 const routes: Routes = [
   {
@@ -64,7 +64,7 @@ const routes: Routes = [
     data: {
       roles: ['ROLE_CUSTOMER']
     },
-    component: HistoryPointListComponent
+    component: PointHistoryComponent
   },
   {
     path: 'history/booking',
@@ -72,7 +72,7 @@ const routes: Routes = [
     data: {
       roles: ['ROLE_CUSTOMER']
     },
-    component: BookingTicketListComponent
+    component: BookingTicketHistoryComponent
   },
   {
     path: 'history/canceled',
@@ -80,7 +80,7 @@ const routes: Routes = [
     data: {
       roles: ['ROLE_CUSTOMER']
     },
-    component: CanceledTicketListComponent
+    component: CanceledTicketHistoryComponent
   }
 
 ];

@@ -1,17 +1,19 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {TicketService} from '../../../service/ticket.service';
 import {ITicketTyDto} from '../../../dto/iticket-ty-dto';
 import {TokenStorageService} from '../../../service/token-storage.service';
+import {TicketService} from '../../../service/ticket.service';
 import {Router} from '@angular/router';
+import {Title} from '@angular/platform-browser';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-canceled-ticket-list',
-  templateUrl: './canceled-ticket-list.component.html',
-  styleUrls: ['./canceled-ticket-list.component.css']
+  selector: 'app-canceled-ticket-history',
+  templateUrl: './canceled-ticket-history.component.html',
+  styleUrls: ['./canceled-ticket-history.component.css']
 })
-export class CanceledTicketListComponent implements OnInit {
+export class CanceledTicketHistoryComponent implements OnInit {
+
   page = 1;
   pageSize = 5;
   total$: Observable<number>;
@@ -25,7 +27,9 @@ export class CanceledTicketListComponent implements OnInit {
 
   constructor(private tokenService: TokenStorageService,
               private ticketService: TicketService,
-              private router: Router) {
+              private router: Router,
+              private title: Title) {
+    this.title.setTitle('Vé đã hủy');
   }
 
   ngOnInit(): void {

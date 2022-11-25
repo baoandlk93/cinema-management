@@ -7,7 +7,7 @@ import java.util.List;
 public interface ITimesService {
 
 
-    List<ITimeDto> getTime(String dateProjection, Integer room);
+    List<ITimeDto>  getTime(String dateProjection, Integer room);
 
     List<Times> findAll();
 

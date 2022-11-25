@@ -1,18 +1,18 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {TicketService} from '../../../service/ticket.service';
-import Swal from 'sweetalert2';
 import {ITicketTyDto} from '../../../dto/iticket-ty-dto';
 import {TokenStorageService} from '../../../service/token-storage.service';
+import {TicketService} from '../../../service/ticket.service';
 import {Router} from '@angular/router';
+import {Title} from '@angular/platform-browser';
+import Swal from "sweetalert2";
 
 @Component({
-  selector: 'app-booking-ticket-list',
-  templateUrl: './booking-ticket-list.component.html',
-  styleUrls: ['./booking-ticket-list.component.css']
+  selector: 'app-booking-ticket-history',
+  templateUrl: './booking-ticket-history.component.html',
+  styleUrls: ['./booking-ticket-history.component.css']
 })
-export class BookingTicketListComponent implements OnInit {
-
+export class BookingTicketHistoryComponent implements OnInit {
 
   nameDelete: string;
   idDelete: number;
@@ -26,11 +26,12 @@ export class BookingTicketListComponent implements OnInit {
   totalPoint = '';
   price: number;
   customerTypeName: number;
-  private username: string;
 
   constructor(private tokenService: TokenStorageService,
               private ticketService: TicketService,
-              private router: Router) {
+              private router: Router,
+              private title: Title) {
+    this.title.setTitle('Vé đã đặt');
   }
 
   ngOnInit(): void {
@@ -98,7 +99,7 @@ export class BookingTicketListComponent implements OnInit {
             console.log(this.idDelete);
             Swal.fire(
               'Đã xóa!',
-              'Thông tin này đã được xóa.'
+              'Vé đã xóa thành công.'
             );
             this.ngOnInit();
           });
@@ -123,4 +124,5 @@ export class BookingTicketListComponent implements OnInit {
   reload() {
     window.location.reload();
   }
+
 }

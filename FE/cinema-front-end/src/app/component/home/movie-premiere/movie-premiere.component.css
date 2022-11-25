@@ -323,7 +323,7 @@ h4{
 
 }
 
-.ul#main-menu a {
+.ul#main-menu h4 {
   display: block;
   padding: 10px 0px;
   text-transform: uppercase;
@@ -337,7 +337,7 @@ h4{
   padding: 0 20px;
 }
 
-.ul#main-menu a:after {
+.ul#main-menu h4:after {
   font-size: 20px;
   content: "";
   height: 5px;
@@ -352,7 +352,7 @@ h4{
 
 }
 
-.ul#main-menu a:hover::after {
+.ul#main-menu h4:hover::after {
   width: 100%;
 
 }

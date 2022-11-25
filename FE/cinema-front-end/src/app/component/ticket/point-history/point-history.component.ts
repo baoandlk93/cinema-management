@@ -1,17 +1,18 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {TicketService} from '../../../service/ticket.service';
 import {ITicketTyDto} from '../../../dto/iticket-ty-dto';
 import {TokenStorageService} from '../../../service/token-storage.service';
+import {TicketService} from '../../../service/ticket.service';
 import {Router} from '@angular/router';
+import {Title} from '@angular/platform-browser';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-history-point-list',
-  templateUrl: './history-point-list.component.html',
-  styleUrls: ['./history-point-list.component.css']
+  selector: 'app-point-history',
+  templateUrl: './point-history.component.html',
+  styleUrls: ['./point-history.component.css']
 })
-export class HistoryPointListComponent implements OnInit {
+export class PointHistoryComponent implements OnInit {
 
   page = 1;
   pageSize = 5;
@@ -29,7 +30,9 @@ export class HistoryPointListComponent implements OnInit {
 
   constructor(private tokenService: TokenStorageService,
               private ticketService: TicketService,
-              private router: Router) {
+              private router: Router,
+              private title: Title) {
+    this.title.setTitle('Lịch sử điểm');
   }
 
   ngOnInit(): void {
@@ -66,6 +69,7 @@ export class HistoryPointListComponent implements OnInit {
     this.showListHistoryPoint();
 
   }
+
   whenLogout() {
     this.tokenService.logOut();
     Swal.fire({
@@ -82,4 +86,5 @@ export class HistoryPointListComponent implements OnInit {
   reload() {
     window.location.reload();
   }
+
 }

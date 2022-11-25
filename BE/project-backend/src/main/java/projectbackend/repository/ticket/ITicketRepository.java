@@ -176,24 +176,23 @@ public interface ITicketRepository extends JpaRepository<Ticket, Integer> {
      */
     @Query(value = "select movie.name as movieName, ticket.ticket_booking_time as bookingTime," +
             "ticket.status_ticket as statusTicket, seat_type.price as price, ticket.id as ticketId " +
-            "from ticket " +
-            "join customer on customer.id = ticket.customer_id " +
-            "join seat_detail on seat_detail.id = ticket.seat_detail_id " +
+            "from customer " +
+            "join ticket on customer.id = ticket.customer_id " +
+            "join seat_detail on ticket.seat_detail_id = seat_detail.id " +
             "join show_times on show_times.id = seat_detail.show_time_id " +
             "join movie on movie.id = show_times.movie_id " +
-            "join room on room.id = show_times.room_id " +
-            "join seat_room on seat_room.room_id = room.id " +
+            "join seat_room on seat_room.id = seat_detail.seat_room_id " +
             "join seat_type on seat_type.id = seat_room.seat_type_id " +
             "where customer.username = :username " +
             "and (ticket.status_ticket between 1 and  2) and ticket.is_delete = 0 group by ticket.id " +
             "order by ticket.ticket_booking_time desc",
-            countQuery = "select count(*) from ticket " +
-                    "join customer on customer.id = ticket.customer_id " +
+            countQuery = "select count(*) from customer " +
+                    "join ticket on customer.id = ticket.customer_id " +
                     "join seat_detail on seat_detail.id = ticket.seat_detail_id " +
                     "join show_times on show_times.id = seat_detail.show_time_id " +
                     "join movie on movie.id = show_times.movie_id " +
                     "join room on room.id = show_times.room_id " +
-                    "join seat_room on seat_room.room_id = room.id " +
+                    "join seat_room on seat_room.id = room.id " +
                     "join seat_type on seat_type.id = seat_room.seat_type_id " +
                     "where customer.username = :username " +
                     "and (ticket.status_ticket between 1 and  2) and ticket.is_delete = 0 group by ticket.id " +
@@ -222,13 +221,12 @@ public interface ITicketRepository extends JpaRepository<Ticket, Integer> {
     @Query(value = "select movie.name as movieName, ticket.ticket_booking_time as bookingTime," +
             "ticket.status_ticket as statusTicket, seat_type.price as price, ticket.id as ticketId," +
             "ticket.is_delete as isDeleteTicket,customer.name as customerName  " +
-            "from ticket " +
-            "join customer on customer.id = ticket.customer_id " +
-            "join seat_detail on seat_detail.id = ticket.seat_detail_id " +
+            "from customer " +
+            "join ticket on customer.id = ticket.customer_id " +
+            "join seat_detail on ticket.seat_detail_id = seat_detail.id " +
             "join show_times on show_times.id = seat_detail.show_time_id " +
             "join movie on movie.id = show_times.movie_id " +
-            "join room on room.id = show_times.room_id " +
-            "join seat_room on seat_room.room_id = room.id " +
+            "join seat_room on seat_room.id = seat_detail.seat_room_id " +
             "join seat_type on seat_type.id = seat_room.seat_type_id " +
             "where customer.username = :username " +
             "and ticket.is_delete = 1 group by ticket.id order by ticket.ticket_booking_time desc ",

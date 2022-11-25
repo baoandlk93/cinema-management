@@ -51,15 +51,15 @@ public class MovieRestController {
     //NamHV function
     //6.5.1.1. Danh Sách Phim – Xem danh sách phim
     //6.5.1.3. Danh sách Phim – Tìm kiếm Phim
-    @GetMapping("/list/home")
-    public ResponseEntity<Page<IMovieDtoHome>> getAllMovie(@RequestParam(value = "name", defaultValue = "") String name,
-                                                       @PageableDefault Pageable pageable) {
-        Page<IMovieDtoHome> moviePage = iMovieService.findAllHome(name, pageable);
-        if (moviePage.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        @GetMapping("/list/home")
+        public ResponseEntity<Page<IMovieDtoHome>> getAllMovie(@RequestParam(value = "name", defaultValue = "") String name,
+                                                           @PageableDefault Pageable pageable) {
+            Page<IMovieDtoHome> moviePage = iMovieService.findAllHome(name, pageable);
+            if (moviePage.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(moviePage, HttpStatus.OK);
         }
-        return new ResponseEntity<>(moviePage, HttpStatus.OK);
-    }
 
     @GetMapping("/list/premiere")
     public ResponseEntity<Page<IMovieDtoHome>> getAllPremiereSoonMovie(@RequestParam(value = "name", defaultValue = "") String name,

@@ -46,7 +46,4 @@ export class SidebarComponent implements OnInit {
     this.pageYoffset = window.pageYOffset;
   }
 
-  scrollToTop() {
-    this.scroll.scrollToPosition([0, 0]);
-  }
 }

@@ -33,12 +33,12 @@
         </div>
 
       </div>
-
       <div class="card 2">
-        <a class="card_image" href="#">
-          <img src="https://rapchieuphim.com/photos/8925/CGTQK_NEW_POSTER.jpg"/>
+        <a class="card_image">
+          <img
+            src="https://i.vietgiaitri.com/2022/11/16/xuat-hien-mon-do-viet-nam-quen-thuoc-trong-black-panther-2-khien-khan-gia-phan-khich-5be-6747609.jpg"/>
         </a>
-        <div class="card_title title-white">
+        <div class="card_title title-white mb-5">
         </div>
       </div>
 
@@ -46,17 +46,17 @@
         <a class="card_image" href="#">
           <img src="https://sort.vn/upload_images/images/2021/10/26/review-phim-bo-gia.jpg"/>
         </a>
-        <div class="card_title">
+        <div class="card_title title-white">
         </div>
       </div>
 
-      <!--      <div class="card 4">-->
-      <!--        <a class="card_image" href="#">-->
-      <!--          <img src="https://static2.yan.vn/YanNews/2167221/201912/top-12-phim-chieu-rap-han-trung-thai-my-hay-nhat-moi-thoi-dai-41fcbc31.jpg"/>-->
-      <!--        </a>-->
-      <!--        <div class="card_title title-black">-->
-      <!--        </div>-->
-      <!--      </div>-->
+      <div class="card 4">
+        <a class="card_image" href="#">
+          <img src="https://sort.vn/upload_images/images/2021/10/26/review-phim-bo-gia.jpg"/>
+        </a>
+        <div class="card_title">
+        </div>
+      </div>
     </div>
     <div class="col-lg-2"></div>
   </div>
@@ -71,12 +71,12 @@
           <div class="collapse navbar-collapse" id="wrapper">
             <ul class="ul" id="main-menu">
               <li>
-                <a class="text-light" routerLink="">Phim đang
-                  chiếu</a>
+                <h4 class="text-light" routerLink="">Phim đang
+                  chiếu</h4>
               </li>
               <li>
-                <a class="text-light" routerLink="/list/premiere">Phim sắp
-                  chiếu </a>
+                <h4 class="text-light" routerLink="/list/premiere">Phim sắp
+                  chiếu </h4>
               </li>
             </ul>
           </div>
@@ -105,7 +105,7 @@
 <div class="row ul mt-5">
   <div class="col-lg-2"></div>
   <div class="col-lg-8 col-md-12 col-ms-12">
-    <h1 class="mb-5 mt-5" *ngIf="!action" style="color: white;text-align: center">Không tìm thấy phim này !!!!</h1>
+    <h1 class="mb-5 mt-5" *ngIf="!action" style="color: orange;text-align: center">Không tìm thấy phim này !!!!</h1>
     <div class="row" *ngIf="action">
       <div class="col-lg-4 col-md-6 col-ms-12" *ngFor="let item of (movieList$ |async)">
         <div class="booking-card1"

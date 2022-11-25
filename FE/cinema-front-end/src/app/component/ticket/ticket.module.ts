@@ -9,9 +9,9 @@ import {BookingSeatComponent} from './booking-seat/booking-seat.component';
 import {BookingTicketComponent} from './booking-ticket/booking-ticket.component';
 import {ConfirmBookingTicketComponent} from './confirm-booking-ticket/confirm-booking-ticket.component';
 import {PaymentBookingTicketComponent} from './payment-booking-ticket/payment-booking-ticket.component';
-import {HistoryPointListComponent} from './history-point-list/history-point-list.component';
-import {BookingTicketListComponent} from './booking-ticket-list/booking-ticket-list.component';
-import {CanceledTicketListComponent} from './canceled-ticket-list/canceled-ticket-list.component';
+import {PointHistoryComponent} from './point-history/point-history.component';
+import {BookingTicketHistoryComponent} from './booking-ticket-history/booking-ticket-history.component';
+import {CanceledTicketHistoryComponent} from './canceled-ticket-history/canceled-ticket-history.component';
 
 
 @NgModule({
@@ -21,9 +21,9 @@ import {CanceledTicketListComponent} from './canceled-ticket-list/canceled-ticke
     BookingTicketComponent,
     ConfirmBookingTicketComponent,
     PaymentBookingTicketComponent,
-    HistoryPointListComponent,
-    BookingTicketListComponent,
-    CanceledTicketListComponent],
+    CanceledTicketHistoryComponent,
+    BookingTicketHistoryComponent,
+    PointHistoryComponent],
   imports: [
     CommonModule,
     TicketRoutingModule,

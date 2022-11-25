@@ -8,12 +8,12 @@
           <div class="collapse navbar-collapse" id="wrapper">
             <ul class="ul" id="main-menu">
               <li>
-                <a class="text-light" routerLink="/moviePlay">Phim đang
-                  chiếu</a>
+                <h4 class="text-light" routerLink="/moviePlay">Phim đang
+                  chiếu</h4>
               </li>
               <li>
-                <a class="text-light" routerLink="/moviePremiere">Phim sắp
-                  chiếu </a>
+                <h4 class="text-light" routerLink="/moviePremiere">Phim sắp
+                  chiếu </h4>
               </li>
             </ul>
           </div>
@@ -42,7 +42,7 @@
 <div class="row ul">
   <div class="col-lg-2"></div>
   <div class="col-lg-8 col-md-12 col-ms-12">
-    <h1 class="mb-5 mt-5" *ngIf="!action" style="color: white;text-align: center">Không tìm thấy phim này !!!!</h1>
+    <h1 class="mb-5 mt-5" *ngIf="!action" style="color: orange;text-align: center">Không tìm thấy phim này !!!!</h1>
     <div class="row" *ngIf="action">
       <div class="col-lg-4 col-md-6 col-ms-12" *ngFor="let item of (movieList$ |async)">
         <div class="booking-card1"
